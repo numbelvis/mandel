@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mandel.arb
+namespace mandel
 {
-    public static class ArbConstants
+    public static class MandelConstants
     {
         /// <summary>
         /// Number of digits that can be represented in each slot of the array.  A fundamental constant of the entire system.

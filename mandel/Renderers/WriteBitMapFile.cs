@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mandel.cuda
+namespace mandel
 {
-    public class CudaRegularMathCalculator : CalculatorBase<CudaRegularMathCalculator>
+    public class WriteBitMapFile
     {
     }
 }

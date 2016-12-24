@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using mandel.BaseClasses;
+using System.Threading.Tasks;
 
 namespace mandel
 {
-    public class RegularMathCalculator : CalculatorBase
+    public class RenderBitMapBytes
     {
-
     }
 }

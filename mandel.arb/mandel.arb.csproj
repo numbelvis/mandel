@@ -43,6 +43,7 @@
     <Compile Include="ArbDecimal.cs" />
     <Compile Include="ArbInteger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ArbRealNumber.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="__README.txt" />

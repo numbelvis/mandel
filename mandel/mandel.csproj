@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,10 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseClasses\CalculatorBase.cs" />
+    <Compile Include="Abstract\CalculatorBase.cs" />
+    <Compile Include="Abstract\ILocation.cs" />
+    <Compile Include="Abstract\RenderBase.cs" />
+    <Compile Include="MandelConstants.cs" />
+    <Compile Include="Calculators\ArbitraryPrecisionMathCalculator.cs" />
+    <Compile Include="Locations\ArbLocation.cs" />
+    <Compile Include="Locations\Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ArbitraryPrecisionMathCalculator.cs" />
-    <Compile Include="RegularMathCalculator.cs" />
+    <Compile Include="Calculators\RegularMathCalculator.cs" />
+    <Compile Include="Renderers\WriteBitMapFile.cs" />
+    <Compile Include="Renderers\RenderBitMapBytes.cs" />
+    <Compile Include="Renderers\RenderBitmapBase64.cs" />
+    <Compile Include="Renderers\RenderBitMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="__README.txt" />
@@ -53,6 +63,7 @@
       <Name>mandel.arb</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

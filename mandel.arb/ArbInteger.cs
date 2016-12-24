@@ -2,11 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace mandel.arb
 {
-    class ArbInteger
+    public class ArbInteger : ArbRealNumber<ArbInteger>
     {
+        #region Conversions
+
+        public ArbInteger()
+        { }
+
+        public ArbInteger(int num)
+        {
+        }
+
+        public ArbInteger(decimal num)
+        {
+        }
+
+        #endregion
     }
 }
