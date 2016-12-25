@@ -13,7 +13,7 @@ namespace mandel
 
         public abstract Toutput GetFinalResult();
 
-        public abstract void ProcessBlockResult(ushort[] values, int y0, int lines_per, ColoringBase coloring);
+        public abstract void ProcessBlockResult(ushort[] values, int y0, int lines_per, ColoringBase coloring, int max_iterations);
 
         public abstract void Initialize(int output_width, int output_height);
 
@@ -45,7 +45,7 @@ namespace mandel
 
         public Toutput Render<Tcalc, Tcoloring, Tnumbers>(LocationBase<Tnumbers> location)
             where Tcalc : CalculatorBase<Tcalc, Tnumbers>
-            where Tcoloring : ColoringBase, new()
+            where Tcoloring : ColoringBase
             where Tnumbers : class
         {
             return Render<Tcalc, Tcoloring, Tnumbers>(location, 100);
@@ -53,7 +53,7 @@ namespace mandel
 
         public Toutput Render<Tcalc, Tcoloring, Tnumbers>(LocationBase<Tnumbers> location, int max_iterations)
             where Tcalc : CalculatorBase<Tcalc, Tnumbers>
-            where Tcoloring : ColoringBase, new()
+            where Tcoloring : ColoringBase
             where Tnumbers : class
         {
             return Render<Tcalc, Tcoloring, Tnumbers>(location, max_iterations, Environment.ProcessorCount, 1);
@@ -62,11 +62,11 @@ namespace mandel
 
         public Toutput Render<Tcalc, Tcoloring, Tnumbers>(LocationBase<Tnumbers> location, int max_iterations, int thread_count, int lines_per)
             where Tcalc : CalculatorBase<Tcalc, Tnumbers>
-            where Tcoloring : ColoringBase, new()
+            where Tcoloring : ColoringBase
             where Tnumbers : class
         {
             var calculator = Activator.CreateInstance(typeof(Tcalc), new object[] { location, this.OutputWidth, this.OutputHeight }) as CalculatorBase<Tcalc, Tnumbers>;
-            var coloring = Activator.CreateInstance<Tcoloring>();
+            var coloring = Activator.CreateInstance(typeof(Tcoloring), new object[] { max_iterations }) as ColoringBase;
 
             var y = 0;
             var block_height = thread_count * lines_per;
@@ -76,7 +76,8 @@ namespace mandel
                 var tasks = new List<Task<ushort[]>>();
                 for(var thread_num = 0; thread_num < thread_count; thread_num++)
                 {
-                    tasks.Add(Task<ushort[]>.Factory.StartNew(() => calculator.CalculateLines(y + (thread_num * lines_per), lines_per, max_iterations)));
+                    var y_0 = y + (thread_num * lines_per);
+                    tasks.Add(Task<ushort[]>.Factory.StartNew(() => calculator.CalculateLines(y_0, lines_per, max_iterations)));
                 }
 
                 // meter threading by waiting until they are all complete.
@@ -87,7 +88,7 @@ namespace mandel
                 foreach(var task in tasks)
                 {
                     var y_0 = y + (count * lines_per);
-                    ProcessBlockResult(task.Result, y_0, lines_per, coloring);
+                    ProcessBlockResult(task.Result, y_0, lines_per, coloring, max_iterations);
                     count++;
                 }
 

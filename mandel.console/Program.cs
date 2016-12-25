@@ -14,7 +14,7 @@ namespace mandel.console
         static void Main(string[] args)
         {
             var bitmap = new RenderBitMap(800, 600)
-                                .Render<RegularMathCalculator, WaveyColoring, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 100, 1,1);
+                                .Render<RegularMathCalculator, WaveyColoring, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 250, 8, 20);
 
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "examples");
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);

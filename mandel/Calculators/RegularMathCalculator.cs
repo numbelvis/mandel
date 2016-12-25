@@ -13,12 +13,12 @@ namespace mandel
 
         public override int GetWidthDivisionCount()
         {
-            return 1;
+            return 2;
         }
 
         public override int GetWidthDivisionSize()
         {
-            return this.OutputWidth;
+            return this.OutputWidth / GetWidthDivisionCount();
         }
 
         public override ushort[] DoBlock(int x_start, int x_count, int y_start, int y_count, int max_iterations)
@@ -32,7 +32,7 @@ namespace mandel
                 for(var x = 0; x < x_count; x++)
                 {
                     this.Location.EmitPoints(out x0, out y0, x + x_start, y + y_start, this.ColumnWidth, this.LineHeight);
-                    result[y * y_count + x] = CalculatePixel(x0.value, y0.value, max_iterations);
+                    result[y * x_count + x] = CalculatePixel(x0.value, y0.value, max_iterations);
                 }
             }
 

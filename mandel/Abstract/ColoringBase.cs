@@ -8,10 +8,13 @@ namespace mandel
 {
     public abstract class ColoringBase
     {
-        #region Public
+        public abstract Color Get(int iterations, int max_iterations);
 
-        public abstract Color Get(int iterations);
+        public int MaxIterations;
 
-        #endregion
+        public ColoringBase(int max_iterations)
+        {
+            this.MaxIterations = max_iterations;
+        }
     }
 }

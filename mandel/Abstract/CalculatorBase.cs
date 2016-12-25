@@ -45,20 +45,24 @@ namespace mandel
             this.EachWidthDivision = GetWidthDivisionSize();
         }
 
-        public ushort[] CalculateLines(int y_start, int lines_per, int max_iterations)
-        {
-            var result = new ushort[this.OutputWidth * lines_per];
 
-            for (var x = 0; x < this.WidthDivisions; x++)
+        public ushort[] CalculateLines(int y_start, int lines_count, int max_iterations)
+        {
+            // Output array is the size of the lines that will be calculated times the output width.
+            var result = new ushort[this.OutputWidth * lines_count];
+
+            // Calculate each sub-division in serial.
+            for (var division = 0; division < this.WidthDivisions; division++)
             {
-                var iterations = DoBlock(x, this.EachWidthDivision, y_start, lines_per, max_iterations);
+                // Get a block for this division for the lines we are calculating.
+                var iterations = DoBlock(division * this.EachWidthDivision, this.EachWidthDivision, y_start, lines_count, max_iterations);
                 
                 // Copy the results of this block onto the final results.
-                for(var ii = 0; ii < lines_per; ii++)
+                for (var yy = 0; yy < lines_count; yy++)
                 {
-                    for(var jj = 0; jj < this.EachWidthDivision; jj++)
+                    for(var xx = 0; xx < this.EachWidthDivision; xx++)
                     {
-                        result[(ii * this.OutputWidth) + (x * this.EachWidthDivision) + jj] = iterations[ii * this.EachWidthDivision + jj];
+                        result[(yy * this.OutputWidth) + (division * this.EachWidthDivision) + xx] = iterations[yy * this.EachWidthDivision + xx];
                     }
                 }
             }
