@@ -19,15 +19,21 @@ namespace mandel
             _bitmap = new Bitmap(output_width, output_height);
         }
 
-        public override void ProcessBlockResult(ILocation location, ushort[] values, int width, int y0, int lines_per)
+        public override void ProcessBlockResult(ushort[] values, int y0, int lines_per, ColoringBase coloring)
         {
-            throw new NotImplementedException();
+            for (int ii = 0; ii < lines_per; ii++)
+            {
+                for(int x = 0; x < this.OutputWidth; x++)
+                {
+                    var color = coloring.Get(values[ii * lines_per + x]);
+                    _bitmap.SetPixel(x, y0 + ii, color);
+                }
+            }
         }
-
 
         public override Bitmap GetFinalResult()
         {
-            throw new NotImplementedException();
+            return _bitmap;
         }
     }
 }

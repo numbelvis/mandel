@@ -41,12 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\CalculatorBase.cs" />
-    <Compile Include="Abstract\ILocation.cs" />
+    <Compile Include="Abstract\ColoringBase.cs" />
+    <Compile Include="Abstract\LocationBase.cs" />
     <Compile Include="Abstract\RenderBase.cs" />
+    <Compile Include="Coloring\WaveyColoring.cs" />
     <Compile Include="MandelConstants.cs" />
     <Compile Include="Calculators\ArbitraryPrecisionMathCalculator.cs" />
     <Compile Include="Locations\ArbLocation.cs" />
     <Compile Include="Locations\Location.cs" />
+    <Compile Include="MDecimal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Calculators\RegularMathCalculator.cs" />
     <Compile Include="Renderers\WriteBitMapFile.cs" />

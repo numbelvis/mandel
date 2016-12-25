@@ -6,8 +6,8 @@ using mandel;
 
 namespace mandel
 {
-    public class ArbitraryPrecisionMathCalculator : CalculatorBase<ArbitraryPrecisionMathCalculator>
+    public class ArbitraryPrecisionMathCalculator
     {
-
+        
     }
 }
