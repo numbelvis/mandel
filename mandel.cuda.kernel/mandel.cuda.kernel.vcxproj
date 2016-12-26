@@ -85,7 +85,9 @@
     </Link>
     <PostBuildEvent>
       <Command>echo copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"
-copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"</Command>
+copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"
+
+copy "$(ProjectDir)Debug\kernel.ptx" "$(ProjectDir)..\lib\ptx\regmath\kernel.ptx"</Command>
     </PostBuildEvent>
     <CudaCompile>
       <Keep>true</Keep>
