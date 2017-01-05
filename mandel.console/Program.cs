@@ -25,11 +25,11 @@ namespace mandel.console
 
             */
 
-            var bitmap = new RenderBitMap(100, 60)
+            var bitmap = new RenderBitMap(400, 300)
                                             .Render<ArbitraryPrecisionMathCalculator, WaveyColoring, ArbDecimal>(new ArbLocation(new ArbDecimal(-2.5m), 
                                                 new ArbDecimal(1m),
                                                 new ArbDecimal(-1m),
-                                                new ArbDecimal(1m)), 250, 1, 1);
+                                                new ArbDecimal(1m)), 250, 8, 5);
 
 
 

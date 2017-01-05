@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace mandel
@@ -65,6 +66,8 @@ namespace mandel
             where Tcoloring : ColoringBase
             where Tnumbers : class
         {
+            Console.WriteLine(String.Format("Rendering {0} x {1} using {2} threads.", this.OutputWidth, this.OutputHeight, thread_count));
+
             var calculator = Activator.CreateInstance(typeof(Tcalc), new object[] { location, this.OutputWidth, this.OutputHeight }) as CalculatorBase<Tcalc, Tnumbers>;
             var coloring = Activator.CreateInstance(typeof(Tcoloring), new object[] { max_iterations }) as ColoringBase;
 
@@ -72,24 +75,28 @@ namespace mandel
             var block_height = thread_count * lines_per;
             while (y < this.OutputHeight)
             {
-                // A block is broken up into threads.
-                var tasks = new List<Task<ushort[]>>();
-                for(var thread_num = 0; thread_num < thread_count; thread_num++)
+                var results = new ushort[thread_count][];
+                var countdown = new CountdownEvent(thread_count);
+                for (var tt = 0; tt < thread_count; tt++)
                 {
-                    var y_0 = y + (thread_num * lines_per);
-                    tasks.Add(Task<ushort[]>.Factory.StartNew(() => calculator.CalculateLines(y_0, lines_per, max_iterations)));
+                    var y_0 = y + (tt * lines_per);
+                    var tt_for_closure = tt;
+                    new Thread(() =>
+                    {
+                        var lines = calculator.CalculateLines(y_0, lines_per, max_iterations);
+                        results[tt_for_closure] = lines;
+
+                        countdown.Signal();
+                    }).Start();
                 }
+                countdown.Wait();
 
-                // meter threading by waiting until they are all complete.
-                Task.WaitAll(tasks.ToArray());
-
-                // Process each block.
-                var count = 0;
-                foreach(var task in tasks)
+                // Write them sequentially.
+                for (var tt = 0; tt < thread_count; tt++)
                 {
-                    var y_0 = y + (count * lines_per);
-                    ProcessBlockResult(task.Result, y_0, lines_per, coloring, max_iterations);
-                    count++;
+                    var y_0 = y + (tt * lines_per);
+                    var line = results[tt];
+                    ProcessBlockResult(line, y_0, lines_per, coloring, max_iterations);
                 }
 
                 y += block_height;

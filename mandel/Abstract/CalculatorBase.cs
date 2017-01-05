@@ -48,6 +48,8 @@ namespace mandel
 
         public ushort[] CalculateLines(int y_start, int lines_count, int max_iterations)
         {
+            Console.WriteLine("Calculating lines: {0} - {1}", y_start, y_start + lines_count - 1);
+
             // Output array is the size of the lines that will be calculated times the output width.
             var result = new ushort[this.OutputWidth * lines_count];
 
