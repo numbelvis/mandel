@@ -14,14 +14,46 @@ namespace mandel.console
     {
         static void Main(string[] args)
         {
-            /*
-            var bitmap = new RenderBitMap(800, 600)
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "examples");
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+
+
+            /* Rendering bytes instead of the bitmap object. 
+            var bitmap_bytes = new RenderBmpBytes(400, 300)
                                 .Render<RegularMathCalculator, WaveyColoring, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 250, 8, 20);
+
+            var filename = Path.Combine(path, "fractal.bmp");
+            File.WriteAllBytes(filename, bitmap_bytes);
             */
 
+            /* Rendering png bytes instead of the bitmap object.
+            var png_bytes = new RenderPngBytes(400, 300)
+                                .Render<RegularMathCalculator, WaveyColoring, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 250, 8, 20);
+
+            var filename = Path.Combine(path, "fractal.png");
+            File.WriteAllBytes(filename, png_bytes);
+            */
+
+            /* Rendering jpeg bytes instead of the bitmap object. */
+            var jpeg_bytes = new RenderPngBytes(400, 300)
+                                .Render<RegularMathCalculator, WaveyColoring, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 250, 8, 20);
+
+            var filename = Path.Combine(path, "fractal.jpg");
+            File.WriteAllBytes(filename, jpeg_bytes);
+
+
+
+            
+            /*
+                        var bitmap = new RenderBitMap(800, 600)
+                                            .Render<RegularMathCalculator, WaveyColoring, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 250, 8, 20);
+                        */
+
+            /*
             var bitmap = new RenderBitMap(800, 600)
                                             .Render<RegularMathCalculator, SingleColor, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 250, 8, 20);
-            
+            */
+
 
             /*
             var bitmap = new RenderBitMap(800, 600)
@@ -36,12 +68,13 @@ namespace mandel.console
                                                 new ArbDecimal(1m)), 250, 8, 5);
             */
 
-
+            /*
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "examples");
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
             var filename = Path.Combine(path, "fractal.bmp");
             bitmap.Save(filename);
+             */
         }
     }
 }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace mandel
 {
+    /// <summary>
+    /// Used to represent a decimal.
+    /// </summary>
     public class MDecimal
     {
         public decimal value = 0m;

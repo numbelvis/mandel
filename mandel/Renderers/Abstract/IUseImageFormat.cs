@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace mandel
 {
-    public class RenderBitMapBytes
+    interface IUseImageFormat
     {
+        ImageFormat Format
+        { get; }
     }
 }
