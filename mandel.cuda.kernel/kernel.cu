@@ -1,3 +1,4 @@
+#include <inttypes.h>
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 
@@ -6,7 +7,7 @@
 	Kernel for use with ManagedCuda
 
 */
-__global__ void kernel(int *c, int xsize, double y_scale, double y_base, double x_scale, double x_base, int max)
+__global__ void kernel(uint16_t *c, int xsize, double y_scale, double y_base, double x_scale, double x_base, int max)
 {
 	int idx_x = blockDim.x * blockIdx.x + threadIdx.x;
 	int idx_y = blockDim.y * blockIdx.y + threadIdx.y;
@@ -16,7 +17,7 @@ __global__ void kernel(int *c, int xsize, double y_scale, double y_base, double 
 	double y0 = (y_base + ((double)idx_y * y_scale));
 	double x = 0;
 	double y = 0;
-	int ii = 0;
+	uint16_t ii = 0;
 	double temp = 0;
 	while (ii < max && x * x + y * y < 4)
 	{

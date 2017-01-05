@@ -35,7 +35,7 @@ namespace mandel.cuda
 
                 // The ptx file must be in the same folder as the executing file.
                 CUmodule module = this.Context.LoadModule("kernel.ptx");
-                this.Kernel = new CudaKernel("_Z6kernelPiiddddi", module, Context);
+                this.Kernel = new CudaKernel("_Z6kernelPtiddddi", module, Context);
             }
         }
 
@@ -66,11 +66,11 @@ namespace mandel.cuda
             MDecimal x0;
             this.Location.EmitPoints(out x0, out y0, x_start, y_start, this.ColumnWidth, this.LineHeight);
 
-            // Set up the GPU's threads and blocks.  For threads, we use a one-dimensional array with a length of the max threads the GPU allows per block.
-            Kernel.BlockDimensions = new dim3(Kernel.MaxThreadsPerBlock);
+            // Set up the GPU's threads and blocks.  For threads, we use a one-dimensional array the length of x_count, which will never be greater than MaxThreadsPerBlock
+            Kernel.BlockDimensions = new dim3(x_count);
 
             // Then the blocks are done 1 dimensionally as well with a width of the y_count.  
-            // This y_count comes from the lines_per value.  To make the GPU worked hard per cycle, increase the Lines Per value when calling the renderer.
+            // This y_count comes from the lines_per value.  To make the GPU work hard per cycle, increase the Lines Per value when calling the renderer.
             Kernel.GridDimensions = new dim3(1, y_count);
 
 
@@ -78,10 +78,10 @@ namespace mandel.cuda
             this.Context.SetCurrent();
 
             // An array for us to copy the GPU's output into.
-            var output = new int[result_length];
+            var output = new ushort[result_length];
 
             // Create an array on the device based on the result array.
-            var device_result = new CudaDeviceVariable<int>(result_length);
+            var device_result = new CudaDeviceVariable<ushort>(result_length);
 
             // Run the kernel.  It will populate the device result array in device memory.
             this.Kernel.Run(device_result.DevicePointer, x_count, Convert.ToDouble(this.LineHeight.value), Convert.ToDouble(y0.value), Convert.ToDouble(this.ColumnWidth.value), Convert.ToDouble(x0.value), max_iterations);
@@ -89,13 +89,7 @@ namespace mandel.cuda
             // Copy the device's result array back to the host (the computer) so we can use it.
             device_result.CopyToHost(output);
 
-            // Convert to ushorts.  The result should all be converted to use ushort to eliminate this step.
-            var result = new ushort[result_length];
-            for (var ii = 0; ii < result_length; ii++)
-            {
-                result[ii] = (ushort)output[ii];
-            }
-            return result;
+            return output;
         }
 
         #endregion
