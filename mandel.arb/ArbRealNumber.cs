@@ -114,7 +114,7 @@ namespace mandel.arb
             else if (a.sign == false && b.sign == false)
             {
                 result = math.AddTwoPositive_Static((T)a, (T)b);
-                result.sign = true;
+                result.sign = false;
             }
 
             result.CheckForZero();
@@ -157,7 +157,7 @@ namespace mandel.arb
                 result = math.AddTwoPositive_Static((T)a, (T)b);
             }
 
-            // -a - -b becomes b - a
+            // -a - -b = -a + b = b - a
             else if (a.sign == false && b.sign == false)
             {
                 result = math.SubtractTwoPositive_Static((T)b, (T)a);
