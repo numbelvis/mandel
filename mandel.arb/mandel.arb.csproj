@@ -41,7 +41,10 @@
   <ItemGroup>
     <Compile Include="ArbConstants.cs" />
     <Compile Include="ArbDecimal.cs" />
+    <Compile Include="ArbHugeInteger.cs" />
     <Compile Include="ArbInteger.cs" />
+    <Compile Include="Exceptions\ArbMultiplicationOverflow.cs" />
+    <Compile Include="Exceptions\ArbAdditionOverflow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ArbRealNumber.cs" />
   </ItemGroup>

@@ -53,6 +53,10 @@
     <Content Include="__README.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\mandel.arb\mandel.arb.csproj">
+      <Project>{20ed0c4b-b4d9-455a-878e-9eccbb438fc8}</Project>
+      <Name>mandel.arb</Name>
+    </ProjectReference>
     <ProjectReference Include="..\mandel.cuda\mandel.cuda.csproj">
       <Project>{9c15c1af-f44e-4311-bd7f-61bd012d0974}</Project>
       <Name>mandel.cuda</Name>

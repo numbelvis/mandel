@@ -18,7 +18,7 @@ __global__ void kernel(int *c, int xsize, double y_scale, double y_base, double 
 	double y = 0;
 	int ii = 0;
 	double temp = 0;
-	while (x * x + y * y < 4 && ii < max)
+	while (ii < max && x * x + y * y < 4)
 	{
 		temp = x * x - y * y + x0;
 		y = x * 2 * y + y0;

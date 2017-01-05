@@ -87,17 +87,18 @@ tmp9:
 
 BB0_1:
 	.loc	1 21 1
-	mul.f64 	%fd19, %fd28, %fd28;
-	mul.f64 	%fd20, %fd29, %fd29;
-	add.f64 	%fd21, %fd19, %fd20;
-	setp.lt.f64	%p4, %fd21, 0d4010000000000000;
+	setp.lt.s32	%p4, %r22, %r7;
 	mov.pred 	%p7, 0;
+tmp10:
 	not.pred 	%p5, %p4;
 	@%p5 bra 	BB0_3;
 	bra.uni 	BB0_2;
 
 BB0_2:
-	setp.lt.s32	%p7, %r22, %r7;
+	mul.f64 	%fd19, %fd28, %fd28;
+	mul.f64 	%fd20, %fd29, %fd29;
+	add.f64 	%fd21, %fd19, %fd20;
+	setp.lt.f64	%p7, %fd21, 0d4010000000000000;
 
 BB0_3:
 	not.pred 	%p6, %p7;
@@ -106,39 +107,39 @@ BB0_3:
 
 BB0_4:
 	.loc	1 23 1
-tmp10:
+tmp11:
 	mul.f64 	%fd22, %fd28, %fd28;
 	mul.f64 	%fd23, %fd29, %fd29;
 	sub.f64 	%fd24, %fd22, %fd23;
 	add.f64 	%fd25, %fd24, %fd1;
-tmp11:
+tmp12:
 	.loc	1 24 1
 	mul.f64 	%fd26, %fd28, 0d4000000000000000;
 	mul.f64 	%fd27, %fd26, %fd29;
 	add.f64 	%fd29, %fd27, %fd2;
-tmp12:
+tmp13:
 	.loc	1 25 1
 	mov.f64 	%fd28, %fd25;
-tmp13:
+tmp14:
 	.loc	1 26 1
 	add.s32 	%r22, %r22, 1;
-tmp14:
-	bra.uni 	BB0_1;
 tmp15:
+	bra.uni 	BB0_1;
+tmp16:
 
 BB0_5:
 	.loc	1 30 1
 	shl.b32 	%r20, %r1, 2;
 	add.s32 	%r21, %r5, %r20;
 	st.u32 	[%r21], %r22;
-tmp16:
+tmp17:
 	.loc	1 31 2
 	ret;
-tmp17:
+tmp18:
 func_end0:
 }
 
-	.file	1 "C:/Users/kentsm/Documents/Programming/mandel/mandel.cuda.kernel/kernel.cu", 1482696818, 718
+	.file	1 "C:/Users/kentsm/Documents/Programming/mandel/mandel.cuda.kernel/kernel.cu", 1482788468, 718
 
 .section .debug_info {
  .b32 693
@@ -490,15 +491,15 @@ func_end0:
  .b8 4
 
  .b32 tmp0
+ .b32 tmp18
+ .b8 4
+
+ .b32 tmp0
  .b32 tmp17
  .b8 4
 
  .b32 tmp0
- .b32 tmp16
- .b8 4
-
- .b32 tmp0
- .b32 tmp16
+ .b32 tmp17
  .b8 5
 
  .b8 105
@@ -926,7 +927,7 @@ func_end0:
 }
 .section .debug_loc {
  .b32 tmp6
- .b32 tmp9
+ .b32 tmp10
  .b8 7
  .b8 0
  .b8 144
@@ -936,8 +937,8 @@ func_end0:
  .b8 179
  .b8 214
  .b8 4
- .b32 tmp9
- .b32 tmp13
+ .b32 tmp10
+ .b32 tmp14
  .b8 7
  .b8 0
  .b8 144
@@ -947,7 +948,7 @@ func_end0:
  .b8 179
  .b8 214
  .b8 4
- .b32 tmp13
+ .b32 tmp14
  .b32 func_end0
  .b8 7
  .b8 0
@@ -961,7 +962,7 @@ func_end0:
  .b32 0
  .b32 0
  .b32 tmp7
- .b32 tmp9
+ .b32 tmp10
  .b8 7
  .b8 0
  .b8 144
@@ -971,8 +972,8 @@ func_end0:
  .b8 179
  .b8 214
  .b8 4
- .b32 tmp9
- .b32 tmp12
+ .b32 tmp10
+ .b32 tmp13
  .b8 7
  .b8 0
  .b8 144
@@ -982,7 +983,7 @@ func_end0:
  .b8 179
  .b8 214
  .b8 4
- .b32 tmp12
+ .b32 tmp13
  .b32 func_end0
  .b8 7
  .b8 0
@@ -1006,7 +1007,7 @@ func_end0:
  .b8 171
  .b8 2
  .b32 tmp9
- .b32 tmp14
+ .b32 tmp15
  .b8 6
  .b8 0
  .b8 144
@@ -1015,7 +1016,7 @@ func_end0:
  .b8 200
  .b8 171
  .b8 2
- .b32 tmp14
+ .b32 tmp15
  .b32 func_end0
  .b8 6
  .b8 0
@@ -1028,7 +1029,7 @@ func_end0:
  .b32 0
  .b32 0
  .b32 tmp9
- .b32 tmp11
+ .b32 tmp12
  .b8 7
  .b8 0
  .b8 144
@@ -1038,7 +1039,7 @@ func_end0:
  .b8 179
  .b8 214
  .b8 4
- .b32 tmp11
+ .b32 tmp12
  .b32 func_end0
  .b8 7
  .b8 0

@@ -17,12 +17,16 @@ namespace mandel.arb
         /// <summary>
         /// The number of numbers that can be represented by each slot of the array.  We are using base 10.
         /// </summary>
-        public static readonly uint Magnitude = Convert.ToUInt32(Math.Pow(10, NumberOfDigitsPer));
+        public static readonly int Magnitude = (int)Math.Pow(10, NumberOfDigitsPer);
 
 
         /// <summary>
         /// Size of the digits array.  This number times Number of Digits equals out to the total number of digits of precision the number can represent.
         /// </summary>
-        public const ushort DigitArraySize = 25;
+        public const int DigitArraySize = 25;
+
+        // TWICE as many digits as DigitArraySize!
+        public static readonly ushort HugeDigitArraySize = DigitArraySize * 2;
+
     }
 }
