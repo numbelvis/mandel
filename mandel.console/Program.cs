@@ -19,18 +19,22 @@ namespace mandel.console
                                 .Render<RegularMathCalculator, WaveyColoring, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 250, 8, 20);
             */
 
+            var bitmap = new RenderBitMap(800, 600)
+                                            .Render<RegularMathCalculator, SingleColor, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 250, 8, 20);
+            
+
             /*
             var bitmap = new RenderBitMap(800, 600)
                                 .Render<CudaRegularMathCalculator, WaveyColoring, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 250, 1, 20);
 
             */
-
+            /*
             var bitmap = new RenderBitMap(400, 300)
                                             .Render<ArbitraryPrecisionMathCalculator, WaveyColoring, ArbDecimal>(new ArbLocation(new ArbDecimal(-2.5m), 
                                                 new ArbDecimal(1m),
                                                 new ArbDecimal(-1m),
                                                 new ArbDecimal(1m)), 250, 8, 5);
-
+            */
 
 
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "examples");

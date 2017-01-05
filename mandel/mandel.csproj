@@ -44,6 +44,8 @@
     <Compile Include="Abstract\ColoringBase.cs" />
     <Compile Include="Abstract\LocationBase.cs" />
     <Compile Include="Abstract\RenderBase.cs" />
+    <Compile Include="Coloring\SingleColor.cs" />
+    <Compile Include="Coloring\EasyGrayScale.cs" />
     <Compile Include="Coloring\WaveyColoring.cs" />
     <Compile Include="MandelConstants.cs" />
     <Compile Include="Calculators\ArbitraryPrecisionMathCalculator.cs" />
