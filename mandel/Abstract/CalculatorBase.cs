@@ -29,6 +29,7 @@ namespace mandel
         public int OutputHeight;
         public int WidthDivisions;
         public int EachWidthDivision;
+        public int FinalWidthDivision;
         public Tnumber ColumnWidth;
         public Tnumber LineHeight;
 
@@ -43,6 +44,13 @@ namespace mandel
 
             this.WidthDivisions = GetWidthDivisionCount();
             this.EachWidthDivision = GetWidthDivisionSize();
+
+            // Final Width Division is used to accomodate output width that doesn't match up nicely with the Calculators Division Widths.  
+            this.FinalWidthDivision = this.OutputWidth - (this.WidthDivisions * this.EachWidthDivision);
+            if (this.FinalWidthDivision == 0)
+                this.FinalWidthDivision = this.EachWidthDivision;
+            else if (this.FinalWidthDivision < 0)
+                this.FinalWidthDivision = this.EachWidthDivision + this.FinalWidthDivision;
         }
 
 
@@ -57,14 +65,15 @@ namespace mandel
             for (var division = 0; division < this.WidthDivisions; division++)
             {
                 // Get a block for this division for the lines we are calculating.
-                var iterations = DoBlock(division * this.EachWidthDivision, this.EachWidthDivision, y_start, lines_count, max_iterations);
+                var use_each = division == this.WidthDivisions - 1 ? this.FinalWidthDivision : this.EachWidthDivision;
+                var iterations = DoBlock(division * use_each, use_each, y_start, lines_count, max_iterations);
                 
                 // Copy the results of this block onto the final results.
                 for (var yy = 0; yy < lines_count; yy++)
                 {
-                    for(var xx = 0; xx < this.EachWidthDivision; xx++)
+                    for (var xx = 0; xx < use_each; xx++)
                     {
-                        result[(yy * this.OutputWidth) + (division * this.EachWidthDivision) + xx] = iterations[yy * this.EachWidthDivision + xx];
+                        result[(yy * this.OutputWidth) + (division * use_each) + xx] = iterations[yy * use_each + xx];
                     }
                 }
             }

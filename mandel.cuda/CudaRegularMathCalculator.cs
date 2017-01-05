@@ -24,11 +24,19 @@ namespace mandel.cuda
         public CudaRegularMathCalculator(LocationBase<MDecimal> location, int output_width, int output_height)
             : base(location, output_width, output_height)
         {
-            this.Context = new CudaContext(Constants.GPU_DeviceId, true);
+            EnsureSetup();
+        }
 
-            // The ptx file must be in the same folder as the executing file.
-            CUmodule module = this.Context.LoadModule("kernel.ptx");
-            Kernel = new CudaKernel("_Z6kernelPiiddddi", module, Context);
+        void EnsureSetup()
+        {
+            if (this.Context == null)
+            {
+                this.Context = new CudaContext(Constants.GPU_DeviceId, true);
+
+                // The ptx file must be in the same folder as the executing file.
+                CUmodule module = this.Context.LoadModule("kernel.ptx");
+                this.Kernel = new CudaKernel("_Z6kernelPiiddddi", module, Context);
+            }
         }
 
         #endregion
@@ -38,12 +46,14 @@ namespace mandel.cuda
 
         public override int GetWidthDivisionCount()
         {
-            return (int)Math.Floor(Convert.ToDecimal(this.OutputWidth) / Convert.ToDecimal(Constants.GPU_Blocks_x * Constants.GPU_Threads_x));
+            EnsureSetup();
+            return (int)Math.Ceiling((decimal)this.OutputWidth / (decimal)Kernel.MaxThreadsPerBlock);
         }
 
         public override int GetWidthDivisionSize()
         {
-            return Constants.GPU_Blocks_x * Constants.GPU_Threads_x;
+            EnsureSetup();
+            return Kernel.MaxThreadsPerBlock;
         }
 
         public override ushort[] DoBlock(int x_start, int x_count, int y_start, int y_count, int max_iterations)
@@ -54,8 +64,8 @@ namespace mandel.cuda
             MDecimal x0;
             this.Location.EmitPoints(out x0, out y0, x_start, y_start, this.ColumnWidth, this.LineHeight);
 
-            Kernel.BlockDimensions = new dim3(x_count, y_count);
-            Kernel.GridDimensions = new dim3(1, 1);
+            Kernel.BlockDimensions = new dim3(Kernel.MaxThreadsPerBlock, 1);
+            Kernel.GridDimensions = new dim3(1, y_count);
 
             this.Context.SetCurrent();
 

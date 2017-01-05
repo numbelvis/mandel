@@ -35,8 +35,8 @@ namespace mandel.console
             */
 
             /* Rendering jpeg bytes instead of the bitmap object. */
-            var jpeg_bytes = new RenderPngBytes(400, 300)
-                                .Render<RegularMathCalculator, WaveyColoring, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 250, 8, 20);
+            var jpeg_bytes = new RenderPngBytes(1920, 1200)
+                                .Render<CudaRegularMathCalculator, SingleColor, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 1000, 8, 20);
 
             var filename = Path.Combine(path, "fractal.jpg");
             File.WriteAllBytes(filename, jpeg_bytes);
