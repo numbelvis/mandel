@@ -732,7 +732,7 @@ __device__ void TimesTwo(ArbDec *a, ArbDec *result, ArbDec *two, ArbInt *a_int, 
 }
 
 
-__global__ void kernel(double** map, int *c, int xsize,
+__global__ void kernel(uint16_t *c, int xsize,
 	int y_scale_sign, int y_scale_decpos, uint16_t *y_scale_digits,
 	int  y_base_sign, int y_base_decpos, uint16_t *y_base_digits,
 	int  x_scale_sign, int x_scale_decpos, uint16_t *x_scale_digits,
@@ -837,7 +837,7 @@ __global__ void kernel(double** map, int *c, int xsize,
 	Add(&y_base, &y_mult, &y0);
 
 
-	int ii = 0;
+	uint16_t ii = 0;
 	while (KeepGoing(&x, &y, &x2, &y2, &sum, &a_int, &b_int, &huge_scratch, &each_line, &sum_result) && ii < max)
 	{
 		// Calculate x
@@ -855,6 +855,8 @@ __global__ void kernel(double** map, int *c, int xsize,
 		for (int kk = 0; kk < DIGITS; kk++)
 			x.digits[kk] = temp.digits[kk];
 
+		x.sign = temp.sign;
+		x.decpos = temp.decpos;
 
 		// Increase the iterator!!
 		ii++;

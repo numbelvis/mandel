@@ -34,7 +34,7 @@ namespace mandel.cuda
                 this.Context = new CudaContext(Constants.GPU_DeviceId, true);
 
                 // The ptx file must be in the same folder as the executing file.
-                CUmodule module = this.Context.LoadModule("kernel.ptx");
+                CUmodule module = this.Context.LoadModule("regkernel.ptx");
                 this.Kernel = new CudaKernel("_Z6kernelPtiddddi", module, Context);
             }
         }
@@ -47,12 +47,20 @@ namespace mandel.cuda
         public override int GetWidthDivisionCount()
         {
             EnsureSetup();
+            
+            if (this.OutputWidth < Kernel.MaxThreadsPerBlock)
+                return 1;
+
             return (int)Math.Ceiling((decimal)this.OutputWidth / (decimal)Kernel.MaxThreadsPerBlock);
         }
 
         public override int GetWidthDivisionSize()
         {
             EnsureSetup();
+
+            if (this.OutputWidth < Kernel.MaxThreadsPerBlock)
+                return this.OutputWidth;
+
             return Kernel.MaxThreadsPerBlock;
         }
 

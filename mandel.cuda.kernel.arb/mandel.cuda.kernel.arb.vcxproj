@@ -88,7 +88,7 @@
 copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"
 
 
-copy "$(ProjectDir)Debug\kernel.ptx" "$(ProjectDir)..\lib\ptx\arbmath\kernel.ptx"
+copy "$(ProjectDir)Debug\arbkernel.ptx" "$(ProjectDir)..\lib\ptx\arbkernel.ptx"
 
 </Command>
     </PostBuildEvent>
@@ -159,7 +159,7 @@ copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"</Command>
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="kernel.cu" />
+    <CudaCompile Include="arbkernel.cu" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="__README.txt" />
