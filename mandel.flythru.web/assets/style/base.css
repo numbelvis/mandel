@@ -67,3 +67,137 @@ body {
     width: 100%;
     height: 100%;
 }
+
+
+
+
+
+/*          Used by both controls and status    */
+.nice-wrap {
+
+    font-family: Impact, Charcoal, sans-serif;
+    padding: 3px;
+    border: solid 1px white;
+    opacity: 0.625;
+    border-radius: 5px;
+    z-index: 10000;
+    margin: 10px;
+}
+
+
+/*          Status Section                    */
+#status {
+
+    position: fixed;
+    right: 0;
+    top: 150px;
+    border: none;
+    margin-top: 0;
+}
+
+.status-title {
+
+    font-size: 1.4em;
+    color: white;
+}
+
+.status-status {
+
+    font-size: 1em;
+}
+
+.status-not-running {
+
+    color: red;
+}
+
+.status-running {
+
+    color: green;
+}
+
+
+
+
+
+/*          Controls Section                    */
+.btn {
+
+    cursor: pointer;
+    font-size: 1.4em;
+}
+
+.dir-btn {
+
+    cursor: pointer;
+    font-size: 1.4em;
+    background-color: white;
+    color: black;
+    padding-bottom: 8px;
+    line-height: 0.6;
+}
+
+#start_pause{
+
+    position: fixed;
+    top: 150px;
+    left: 0;
+    color: green;
+}
+
+#west {
+
+    position: fixed;
+    top: 50%;
+    left: 0;
+}
+
+#east {
+
+    position: fixed;
+    top: 50%;
+    right: 0;
+}
+
+#north {
+
+    position: fixed;
+    top: 90px;
+    left: 50%;
+}
+
+#south {
+
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+}
+
+
+#northwest {
+
+    position: fixed;
+    top: 90px;
+    left: 0;
+}
+
+#northeast {
+
+    position: fixed;
+    top: 90px;
+    right: 0;
+}
+
+#southwest {
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+#southeast {
+
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
