@@ -34,24 +34,22 @@ body {
     font-weight: 300;
     color: cyan;
     float: left;
+    background-image: url('/assets/img/logo.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    height: 60px;
+    padding-left: 102px;
+    padding-top: 0px;
 }
 
 #area-text {
-
     color: magenta;
-    margin-left: 25px;
+    margin-left: 12px;
     font-family: Courier New, Courier, monospace;
     font-size: 3em;
     float: left;
+    padding: 0;
 }
-
-#title-logo {
-
-    float: right;
-    margin-right: 10px;
-}
-
-
 
 
 

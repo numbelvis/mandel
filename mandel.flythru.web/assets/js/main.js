@@ -36,7 +36,7 @@
 
         // Set the area text.
         if (area_title)
-            document.getElementById('area-text').innerHTML = '&nbsp;:' + area_title;
+            document.getElementById('area-text').innerHTML = ':' + area_title;
     },
 
 
