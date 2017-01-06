@@ -134,9 +134,15 @@ namespace mandel.cuda
             // Copy the device's result array back to the host (the computer) so we can use it.
             device_result.CopyToHost(output);
 
+            lock (_con_lock)
+            {
+                Console.WriteLine(String.Format("Rendered {2} pixels using {0} gpu threads x {1} blocks", x_count, y_count, result_length));
+            }
+
             return output;
         }
 
+        static object _con_lock = new object();
         #endregion
     }
 }

@@ -121,7 +121,7 @@ namespace mandel
             where Tcoloring : ColoringBase
             where Tnumbers : class
         {
-            Console.WriteLine(String.Format("Rendering {0} x {1} using {2} threads.", this.OutputWidth, this.OutputHeight, thread_count));
+            Console.WriteLine(String.Format("Rendering {0} x {1} using {2} CPU threads.", this.OutputWidth, this.OutputHeight, thread_count));
 
             // Create an instance of the calculator and the coloring
             var calculator = Activator.CreateInstance(typeof(Tcalc), new object[] { location, this.OutputWidth, this.OutputHeight }) as CalculatorBase<Tcalc, Tnumbers>;

@@ -19,6 +19,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mandel.cuda.kernel.arb", "m
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mandel.flythru.web", "mandel.flythru.web\mandel.flythru.web.csproj", "{6842F4D6-0BC6-427C-8789-620FC507DDEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mandel.experiments", "mandel.experiments\mandel.experiments.csproj", "{D2A43E67-D3E2-4593-9670-9C7049B62361}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mandel.flythru.lib", "mandel.flythru.lib\mandel.flythru.lib.csproj", "{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,6 +135,30 @@ Global
 		{6842F4D6-0BC6-427C-8789-620FC507DDEC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6842F4D6-0BC6-427C-8789-620FC507DDEC}.Release|Win32.ActiveCfg = Release|Any CPU
 		{6842F4D6-0BC6-427C-8789-620FC507DDEC}.Release|x64.ActiveCfg = Release|Any CPU
+		{D2A43E67-D3E2-4593-9670-9C7049B62361}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2A43E67-D3E2-4593-9670-9C7049B62361}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2A43E67-D3E2-4593-9670-9C7049B62361}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D2A43E67-D3E2-4593-9670-9C7049B62361}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D2A43E67-D3E2-4593-9670-9C7049B62361}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{D2A43E67-D3E2-4593-9670-9C7049B62361}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D2A43E67-D3E2-4593-9670-9C7049B62361}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2A43E67-D3E2-4593-9670-9C7049B62361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2A43E67-D3E2-4593-9670-9C7049B62361}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D2A43E67-D3E2-4593-9670-9C7049B62361}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D2A43E67-D3E2-4593-9670-9C7049B62361}.Release|Win32.ActiveCfg = Release|Any CPU
+		{D2A43E67-D3E2-4593-9670-9C7049B62361}.Release|x64.ActiveCfg = Release|Any CPU
+		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Release|Win32.ActiveCfg = Release|Any CPU
+		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

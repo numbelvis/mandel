@@ -65,6 +65,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\html\test.htm" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\starter-image.jpg" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\style\base.css" />
+    <Content Include="index.html" />
     <Content Include="Web.config" />
     <Content Include="__README.txt" />
   </ItemGroup>
@@ -80,6 +86,9 @@
       <Project>{57023ea4-c634-443f-9a1c-3a2c59976c10}</Project>
       <Name>mandel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\html\viewer\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8DFB2BCF-6857-47D6-9B22-5B88FBF6F337}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{D2A43E67-D3E2-4593-9670-9C7049B62361}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>mandel.console</RootNamespace>
-    <AssemblyName>mandel.console</AssemblyName>
+    <RootNamespace>mandel.experiments</RootNamespace>
+    <AssemblyName>mandel.experiments</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -21,10 +20,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,43 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Experiments\ExperimentBase.cs" />
+    <Compile Include="Experiments\TwoVariableExperiment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Values\TimeToCompleteBlock.cs" />
+    <Compile Include="Variables\LinesPerCycle.cs" />
+    <Compile Include="Variables\NumberOfThreads.cs" />
+    <Compile Include="Variables\ValueTypeVariable.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <Folder Include="Abstracts\" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="__README.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\mandel.arb\mandel.arb.csproj">
-      <Project>{20ed0c4b-b4d9-455a-878e-9eccbb438fc8}</Project>
-      <Name>mandel.arb</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\mandel.cuda\mandel.cuda.csproj">
-      <Project>{9c15c1af-f44e-4311-bd7f-61bd012d0974}</Project>
-      <Name>mandel.cuda</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\mandel.experiments\mandel.experiments.csproj">
-      <Project>{d2a43e67-d3e2-4593-9670-9c7049b62361}</Project>
-      <Name>mandel.experiments</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\mandel\mandel.csproj">
-      <Project>{57023ea4-c634-443f-9a1c-3a2c59976c10}</Project>
-      <Name>mandel</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>copy "$(ProjectDir)..\lib\ptx\regkernel.ptx" "$(ProjectDir)bin\Debug\regkernel.ptx"
-copy "$(ProjectDir)..\lib\ptx\arbkernel.ptx" "$(ProjectDir)bin\Debug\arbkernel.ptx"</PreBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
