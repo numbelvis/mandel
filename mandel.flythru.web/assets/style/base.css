@@ -89,7 +89,7 @@ body {
 #status {
 
     position: fixed;
-    right: 0;
+    left: 0;
     top: 150px;
     border: none;
     margin-top: 0;
@@ -137,12 +137,80 @@ body {
     line-height: 0.6;
 }
 
-#start_pause{
+#start_pause {
 
     position: fixed;
-    top: 150px;
+    top: 225px;
     left: 0;
     color: green;
+    background-color: #b0ffa7;
+}
+
+#zoom-title {
+
+    position: fixed;
+    color: white;
+    right: 0;
+    top: 20%;
+    border: none;
+}
+
+#faster {
+
+    position: fixed;
+    color: blue;
+    background-color: #a5b4ff;
+    top: 25%;
+    right: 0;
+    font-size: 1.0em;
+}
+
+#slower {
+
+    position: fixed;
+    color: purple;
+    background-color: #ebc0ff;
+    top: 30%;
+    right: 0;
+    font-size: 1.0em;
+}
+
+#location-title {
+
+    position: fixed;
+    color: white;
+    right: 0;
+    top: 65%;
+    border: none;
+}
+
+#location-capture {
+
+    position: fixed;
+    color: #5f5a00;
+    background-color: #fffbcd;
+    top: 70%;
+    right: 0;
+    font-size: 1.0em;
+}
+
+#color-title {
+
+    position: fixed;
+    color: white;
+    left: 0;
+    top: 65%;
+    border: none;
+}
+
+#color-random {
+
+    position: fixed;
+    color: #965904;
+    background-color: #ffdcb7;
+    left: 0;
+    top: 70%;
+    font-size: 1.0em;
 }
 
 #west {
