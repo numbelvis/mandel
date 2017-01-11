@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using ManagedCuda;
 using ManagedCuda.BasicTypes;
 using ManagedCuda.VectorTypes; 
@@ -26,15 +27,18 @@ namespace mandel.cuda
         {
             EnsureSetup();
         }
-
+        
         void EnsureSetup()
         {
             if (this.Context == null)
             {
                 this.Context = new CudaContext(Constants.GPU_DeviceId, true);
 
+                var folder = AppDomain.CurrentDomain.BaseDirectory;
+                var file = Path.Combine(folder, "regkernel.ptx");
+
                 // The ptx file must be in the same folder as the executing file.
-                CUmodule module = this.Context.LoadModule("regkernel.ptx");
+                CUmodule module = this.Context.LoadModule(file);
                 this.Kernel = new CudaKernel("_Z6kernelPtiddddi", module, Context);
             }
         }
@@ -43,6 +47,11 @@ namespace mandel.cuda
 
 
         #region Abstracts
+
+        public override void Destroy()
+        {
+            this.Context.Dispose();
+        }
 
         public override int GetWidthDivisionCount()
         {
@@ -96,6 +105,9 @@ namespace mandel.cuda
 
             // Copy the device's result array back to the host (the computer) so we can use it.
             device_result.CopyToHost(output);
+
+            // Free the result memory on the GPU
+            this.Context.FreeMemory(device_result.DevicePointer);
 
             return output;
         }

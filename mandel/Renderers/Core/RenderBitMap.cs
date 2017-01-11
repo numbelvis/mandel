@@ -29,6 +29,10 @@ namespace mandel
             _bitmap = new Bitmap(output_width, output_height);
         }
 
+        public override void Destroy()
+        {
+        }
+
         /// <summary>
         /// Process a block of lines into the bitmap.
         /// </summary>

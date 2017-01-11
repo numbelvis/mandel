@@ -28,13 +28,13 @@ namespace mandel.console
             File.WriteAllBytes(filename, bitmap_bytes);
             */
 
-            /* Rendering png bytes instead of the bitmap object.*/
+            /* Rendering png bytes instead of the bitmap object.
             var png_bytes = new RenderJpegBytes(400, 300)
                                 .Render<RegularMathCalculator, WaveyColoring, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 250, 8, 20);
 
             var filename = Path.Combine(path, "fractal.jpg");
             File.WriteAllBytes(filename, png_bytes);
-            
+            */
 
             /* Rendering jpeg bytes instead of the bitmap object.
             var jpeg_bytes = new RenderJpegBytes(60, 30)
@@ -59,10 +59,10 @@ namespace mandel.console
             */
 
 
-            /*
+           
             var bitmap = new RenderBitMap(4000, 2200)
                                 .Render<CudaRegularMathCalculator, WaveyColoring, MDecimal>(new Location(-2.5m, 1m, -1m, 1m), 250, 1, 20);
-             */
+             
 
             /*
             
@@ -72,10 +72,12 @@ namespace mandel.console
                                                 new ArbDecimal(-1m),
                                                 new ArbDecimal(1m)), 250, 1, 50);
             
-
+            */
+            
+            
             var filename = Path.Combine(path, "fractal.bmp");
             bitmap.Save(filename);
-            */
+            
         }
     }
 }

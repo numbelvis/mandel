@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.IO;
 using mandel;
+using mandel.cuda;
 
 namespace mandel.flythru.lib
 {
@@ -38,12 +39,14 @@ namespace mandel.flythru.lib
             var cache = context.Cache;
 
             var shift_rate = 0.175m;
+            var max_iters = 250;
 
             
             // The command issued from UI.
             var cmd = form["command"];
 
 
+            var coloring = cache.Get(_color_map_key) as ColoringBase;
             var location = cache.Get(_location_key) as LocationBase<MDecimal>;
             if(location == null || cmd == "reset")
             {
@@ -51,10 +54,11 @@ namespace mandel.flythru.lib
                 location.RateOfDescent = 0.95m;
             }
 
-            if(cmd == "colors")
+            if(cmd == "colors" || coloring == null)
             {
                 // Dump the color map and a new one will replace it.
-                cache.Remove(_color_map_key);
+                coloring = new WaveyColoring(max_iters);
+                cache[_color_map_key] = coloring;
             }
             else
             {
@@ -106,10 +110,10 @@ namespace mandel.flythru.lib
 
             cache[_location_key] = location;
 
-            var bytes = new RenderJpegBytes(400, 300)
-                                .Render<RegularMathCalculator, WaveyColoring, MDecimal>(location, 250, 8, 20);
+            var bytes = new RenderPngBytes(400, 300)
+                                .Render<CudaRegularMathCalculator, WaveyColoring, MDecimal>(location, max_iters, 1, 20, coloring);
 
-            File.WriteAllBytes(context.Server.MapPath("~/output/frame.jpg"), bytes);
+            File.WriteAllBytes(context.Server.MapPath("~/output/frame.png"), bytes);
         }
     }
 }

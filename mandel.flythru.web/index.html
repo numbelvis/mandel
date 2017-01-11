@@ -19,26 +19,26 @@
 
         <!-- zoom speed -->
         <div id="zoom-title" class="nice-wrap">Zoom:</div>
-        <div id="faster" class="btn nice-wrap">faster</div>
-        <div id="slower" class="btn nice-wrap">slower</div>
+        <div id="faster" onclick="$mandel.faster()" class="btn nice-wrap">faster</div>
+        <div id="slower" onclick="$mandel.slower()" class="btn nice-wrap">slower</div>
 
         <!-- location -->
         <div id="location-title" class="nice-wrap">Location:</div>
-        <div id="location-capture" class="btn nice-wrap">capture</div>
+        <div id="location-capture" onclick="$mandel.capture()" class="btn nice-wrap">capture</div>
 
         <!-- color -->
         <div id="color-title" class="nice-wrap">Color:</div>
         <div id="color-random" class="btn nice-wrap">random</div>
 
         <!-- directional controls -->
-        <div id="west" class="dir-btn nice-wrap">&#x2190;</div>
-        <div id="east" class="dir-btn nice-wrap">&#x2192;</div>
-        <div id="north" class="dir-btn nice-wrap">&#x2191;</div>
-        <div id="south" class="dir-btn nice-wrap">&#x2193;</div>
-        <div id="northeast" class="dir-btn nice-wrap">&#x2197;</div>
-        <div id="northwest" class="dir-btn nice-wrap">&#x2196;</div>
-        <div id="southeast" class="dir-btn nice-wrap">&#x2198;</div>
-        <div id="southwest" class="dir-btn nice-wrap">&#x2199;</div>
+        <div id="west" onclick="$mandel.west()" class="dir-btn nice-wrap">&#x2190;</div>
+        <div id="east" onclick="$mandel.east()" class="dir-btn nice-wrap">&#x2192;</div>
+        <div id="north" onclick="$mandel.north()" class="dir-btn nice-wrap">&#x2191;</div>
+        <div id="south" onclick="$mandel.south()" class="dir-btn nice-wrap">&#x2193;</div>
+        <div id="northeast" onclick="$mandel.northeast()" class="dir-btn nice-wrap">&#x2197;</div>
+        <div id="northwest" onclick="$mandel.northwest()" class="dir-btn nice-wrap">&#x2196;</div>
+        <div id="southeast" onclick="$mandel.southeast()" class="dir-btn nice-wrap">&#x2198;</div>
+        <div id="southwest" onclick="$mandel.southwest()" class="dir-btn nice-wrap">&#x2199;</div>
     </div>
 
 

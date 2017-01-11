@@ -126,29 +126,45 @@
 
         $mandel.command('capture');
     },
-    up: function () {
+    north: function () {
 
         $mandel.command('north');
     },
-    down: function () {
+    south: function () {
 
         $mandel.command('south');
     },
-    left: function() {
+    west: function () {
 
         $mandel.command('west');
     },
-    right: function() {
+    east: function () {
 
         $mandel.command('east');
     },
+    northeast: function () {
 
-    zoomin: function() {
+        $mandel.command('northeast');
+    },
+    northwest: function () {
+
+        $mandel.command('northwest');
+    },
+    southeast: function () {
+
+        $mandel.command('southeast');
+    },
+    southwest: function () {
+
+        $mandel.command('southwest');
+    },
+
+    faster: function() {
 
         $mandel.command('faster');
     },
 
-    zoomout: function () {
+    slower: function () {
 
         $mandel.command('slower');
     },
@@ -206,7 +222,7 @@
             if (request.readyState == 4 && request.status == 200) {
 
                 var url = request.responseText;
-                $mandel.$image.src = '/output/frame.jpg?timestamp=' + new Date();
+                $mandel.$image.src = '/output/frame.png?timestamp=' + new Date();
                 callback();
                 $mandel.__frames++;
             }

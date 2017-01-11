@@ -19,6 +19,8 @@ namespace mandel
 
         public abstract ushort[] DoBlock(int x_start, int x_count, int y_start, int y_count, int max_iterations);
 
+        public abstract void Destroy();
+
         #endregion
 
 

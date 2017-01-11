@@ -45,6 +45,11 @@ namespace mandel.cuda
 
         #region Abstracts
 
+        public override void Destroy()
+        {
+            this.Context.Dispose();
+        }
+
         public override int GetWidthDivisionCount()
         {
             EnsureSetup();

@@ -23,6 +23,10 @@ namespace mandel
             return this.OutputWidth / GetWidthDivisionCount();
         }
 
+        public override void Destroy()
+        {
+        }
+
         public override ushort[] DoBlock(int x_start, int x_count, int y_start, int y_count, int max_iterations)
         {
             var result = new ushort[x_count * y_count];

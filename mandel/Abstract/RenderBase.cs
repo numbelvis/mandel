@@ -35,6 +35,13 @@ namespace mandel
         /// <param name="output_height"></param>
         public abstract void Initialize(int output_width, int output_height);
 
+        /// <summary>
+        /// Perform any tasks that need to be performed when done with the renderer.
+        /// </summary>
+        /// <param name="output_width"></param>
+        /// <param name="output_height"></param>
+        public abstract void Destroy();
+
         #endregion
 
 
@@ -105,6 +112,14 @@ namespace mandel
             return Render<Tcalc, Tcoloring, Tnumbers>(location, max_iterations, Environment.ProcessorCount, 1);
         }
 
+        public Toutput Render<Tcalc, Tcoloring, Tnumbers>(LocationBase<Tnumbers> location, int max_iterations, int thread_count, int lines_per)
+            where Tcalc : CalculatorBase<Tcalc, Tnumbers>
+            where Tcoloring : ColoringBase
+            where Tnumbers : class
+        { 
+            return Render<Tcalc, Tcoloring, Tnumbers>(location, max_iterations, Environment.ProcessorCount, 1, null);
+        }
+
         /// <summary>
         /// Render the mandelbrot data which is then used by the Renderer to create an output.
         /// </summary>
@@ -116,7 +131,7 @@ namespace mandel
         /// <param name="thread_count"></param>
         /// <param name="lines_per"></param>
         /// <returns></returns>
-        public Toutput Render<Tcalc, Tcoloring, Tnumbers>(LocationBase<Tnumbers> location, int max_iterations, int thread_count, int lines_per)
+        public Toutput Render<Tcalc, Tcoloring, Tnumbers>(LocationBase<Tnumbers> location, int max_iterations, int thread_count, int lines_per, ColoringBase OverrideColoring)
             where Tcalc : CalculatorBase<Tcalc, Tnumbers>
             where Tcoloring : ColoringBase
             where Tnumbers : class
@@ -126,7 +141,7 @@ namespace mandel
             // Create an instance of the calculator and the coloring
             var calculator = Activator.CreateInstance(typeof(Tcalc), new object[] { location, this.OutputWidth, this.OutputHeight }) as CalculatorBase<Tcalc, Tnumbers>;
 
-            var coloring = Activator.CreateInstance(typeof(Tcoloring), new object[] { max_iterations }) as ColoringBase;
+            var coloring = OverrideColoring ?? Activator.CreateInstance(typeof(Tcoloring), new object[] { max_iterations }) as ColoringBase;
 
 
             // Move thru the y values, treating them as lines, and calculate blocks of lines using the number of threads indicated.
@@ -182,7 +197,11 @@ namespace mandel
                 y += block_height;
             }
 
-            return GetFinalResult();
+            var result = GetFinalResult();
+            
+            calculator.Destroy();
+
+            return result;
         }
 
         #endregion

@@ -35,6 +35,10 @@ namespace mandel
             _render.Initialize(output_width, output_height);
         }
 
+        public override void Destroy()
+        {
+        }
+
         /// <summary>
         /// Passes rendering duties on to the bitmap renderer
         /// </summary>
