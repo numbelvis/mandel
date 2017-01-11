@@ -16,6 +16,24 @@
     */
     _viewer_mode: 'stretch',
 
+
+    // Frames since last check by the frame counter
+    __frames: 0,
+
+    // Indicates we are paused and not generating images.
+    __paused: false,
+
+    // Last framecount
+    __framecount: 0,
+
+    // Indicates we are waiting for an image to be generate by the server.
+    __waiting: false,
+
+    // The next command to send.
+    __next_cmd: null,
+
+
+
     // Quick reference to some elements.
     $viewer: document.getElementById('viewer'),
     $image: document.getElementById('main-image'),
@@ -79,6 +97,127 @@
     },
 
     
+
+
+    // REGION:              FPS Counter
+    fpsCounterStart: function () {
+
+        setInterval(function () {
+            var frames = $mb.__framecount;
+            $mb.__framecount = 0;
+
+            document.getElementById('fps').innerHTML = '' + frames + ' FPS';
+        }, 1000);
+    },
+
+
+
+    //  REGION:             Commands
+    command: function(cmd) {
+
+        $mandel.__next_cmd = cmd;
+    },
+
+    colors: function () {
+
+        $mandel.command('colors');
+    },
+    capture: function () {
+
+        $mandel.command('capture');
+    },
+    up: function () {
+
+        $mandel.command('north');
+    },
+    down: function () {
+
+        $mandel.command('south');
+    },
+    left: function() {
+
+        $mandel.command('west');
+    },
+    right: function() {
+
+        $mandel.command('east');
+    },
+
+    zoomin: function() {
+
+        $mandel.command('faster');
+    },
+
+    zoomout: function () {
+
+        $mandel.command('slower');
+    },
+
+    reset: function () {
+
+        $mandel.command('reset');
+    },
+
+
+
+
+    //  REGION:             Processing loop
+
+    start: function (btn) {
+        console.log('Start');
+        if (btn) {
+
+            btn.className += ' hidden';
+
+            var p = document.getElementById('pause');
+            p.className = p.className.replace('hidden', '');
+        }
+
+        var id = setInterval(function () {
+
+            if ($mandel.__paused === true || $mandel.__waiting === true)
+                return;
+
+            $mandel.__waiting = true;
+
+            $mandel.send(function () {
+
+                $mandel.__waiting = false;
+                $mandel.__framecount++;
+            })
+        }, 100);
+    },
+
+    pause: function (btn) {
+
+        $mandel.__paused = $mandel.__paused === true ? false : true;
+        btn.innerHTML = $mandel.__paused === true ? '[unpause]' : '[pause]';
+    },
+
+    send: function (callback) {
+
+        var cmd = $mandel.__next_cmd;
+        $mandel.__next_cmd = null;
+
+        var payload = 'command=' + cmd + '&timestamp=' + new Date().getTime();
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+
+            if (request.readyState == 4 && request.status == 200) {
+
+                var url = request.responseText;
+                $mandel.$image.src = '/output/frame.jpg?timestamp=' + new Date();
+                callback();
+                $mandel.__frames++;
+            }
+        };
+
+        request.open('POST', '/ss_jpg.ashx');
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.send(payload);
+    },
+
+
 
 
 

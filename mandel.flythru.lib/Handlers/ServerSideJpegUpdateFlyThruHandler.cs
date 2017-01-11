@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
 namespace mandel.flythru.lib
 {
-    public class Class1
+    public class ServerSideJpegUpdateFlyThruHandler : FlyThruHandlerBase
     {
     }
 }

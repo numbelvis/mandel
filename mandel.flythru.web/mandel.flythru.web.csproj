@@ -82,6 +82,10 @@
       <Project>{9c15c1af-f44e-4311-bd7f-61bd012d0974}</Project>
       <Name>mandel.cuda</Name>
     </ProjectReference>
+    <ProjectReference Include="..\mandel.flythru.lib\mandel.flythru.lib.csproj">
+      <Project>{1879eda1-0f9c-404e-a65d-8e6e4a21a274}</Project>
+      <Name>mandel.flythru.lib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\mandel\mandel.csproj">
       <Project>{57023ea4-c634-443f-9a1c-3a2c59976c10}</Project>
       <Name>mandel</Name>
@@ -89,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\html\viewer\" />
+    <Folder Include="output\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

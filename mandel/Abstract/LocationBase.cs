@@ -26,6 +26,9 @@ namespace mandel
         public Tnumber yMax
         { get; set; }
 
+        public decimal RateOfDescent
+        { get; set; }
+
         public LocationBase(Tnumber x0, Tnumber xMax, Tnumber y0, Tnumber yMax)
         {
             this.x0 = x0;

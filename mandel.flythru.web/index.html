@@ -13,8 +13,9 @@
         <img id="main-image" data-viewer-mode="stretch" src="" />
         <div id="status" class="nice-wrap"><div class="status-title">Status: </div><div class="status-status status-not-running">not-running</div></div>
         
-        <!-- start/pause/unpause button -->
-        <div id="start_pause" class="btn nice-wrap">start</div>
+        <!-- start and pause/unpause button -->
+        <div id="start" onclick="$mandel.start(this)" class="btn nice-wrap">start</div>
+        <div id="pause" onclick="$mandel.pause(this)" class="hidden btn nice-wrap">pause</div>
 
         <!-- zoom speed -->
         <div id="zoom-title" class="nice-wrap">Zoom:</div>

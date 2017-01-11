@@ -55,12 +55,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Calculators\RegularMathCalculator.cs" />
     <Compile Include="Renderers\Abstract\IUseImageFormat.cs" />
-    <Compile Include="Renderers\ImageRenderers\RenderBmpBytes.cs" />
-    <Compile Include="Renderers\ImageRenderers\RenderJpegBytes.cs" />
+    <Compile Include="Renderers\RenderImageBytes\RenderBmpBytes.cs" />
+    <Compile Include="Renderers\RenderImageBytes\RenderJpegBytes.cs" />
     <Compile Include="Renderers\MemoryStreams\RenderJpegMemoryStream.cs" />
     <Compile Include="Renderers\MemoryStreams\RenderPngMemoryStream.cs" />
     <Compile Include="Renderers\MemoryStreams\RenderBitmapMemoryStream.cs" />
-    <Compile Include="Renderers\ImageRenderers\RenderPngBytes.cs" />
+    <Compile Include="Renderers\RenderImageBytes\RenderPngBytes.cs" />
     <Compile Include="Renderers\Abstract\RenderImageBytesBase.cs" />
     <Compile Include="Renderers\Abstract\RenderMemoryStreamBase.cs" />
     <Compile Include="Renderers\Core\RenderBitMap.cs" />
