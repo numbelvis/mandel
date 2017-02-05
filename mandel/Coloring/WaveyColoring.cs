@@ -18,9 +18,9 @@ namespace mandel
             : base(max_iterations)
         {
             var randy = new Random(DateTime.Now.Millisecond * DateTime.Now.Second);
-            red_factor = randy.Next(4, 50);
-            green_factor = randy.Next(4, 50);
-            blue_factor = randy.Next(4, 50);
+            red_factor = randy.Next(2, 6);
+            green_factor = randy.Next(2, 6);
+            blue_factor = randy.Next(2, 6);
 
             Map = new Color[max_iterations];
 

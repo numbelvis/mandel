@@ -68,13 +68,28 @@
     <Content Include="assets\html\test.htm" />
     <Content Include="assets\img\logo.png" />
     <Content Include="assets\img\starter-image.jpg" />
+    <Content Include="assets\js\comm-modes\mode0.js" />
     <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\vanillaJs\main.js" />
     <Content Include="assets\style\base.css" />
+    <Content Include="Global.asax" />
+    <Content Include="index - Copy.html" />
     <Content Include="index.html" />
+    <Content Include="pages\viewer.aspx" />
     <Content Include="Web.config" />
     <Content Include="__README.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="pages\viewer.aspx.cs">
+      <DependentUpon>viewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\viewer.aspx.designer.cs">
+      <DependentUpon>viewer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +114,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -121,10 +139,15 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PreBuildEvent>copy "$(ProjectDir)..\lib\ptx\regkernel.ptx" "$(ProjectDir)regkernel.ptx"
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)..\lib\ptx\regkernel.ptx" "$(ProjectDir)regkernel.ptx"
 copy "$(ProjectDir)..\lib\ptx\arbkernel.ptx" "$(ProjectDir)arbkernel.ptx"
+echo a | xcopy "$(ProjectDir)..\lib\mandel.flythru.js\*.js" "$(ProjectDir)\js\*.js"
 
-</PreBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

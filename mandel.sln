@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mandel.experiments", "mande
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mandel.flythru.lib", "mandel.flythru.lib\mandel.flythru.lib.csproj", "{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mandel.flythru.js", "mandel.flythru.js\mandel.flythru.js.csproj", "{DEEA7E24-52CB-4659-B45A-7F6B7B664302}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,18 @@ Global
 		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Release|Win32.ActiveCfg = Release|Any CPU
 		{1879EDA1-0F9C-404E-A65D-8E6E4A21A274}.Release|x64.ActiveCfg = Release|Any CPU
+		{DEEA7E24-52CB-4659-B45A-7F6B7B664302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEEA7E24-52CB-4659-B45A-7F6B7B664302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEEA7E24-52CB-4659-B45A-7F6B7B664302}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DEEA7E24-52CB-4659-B45A-7F6B7B664302}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DEEA7E24-52CB-4659-B45A-7F6B7B664302}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{DEEA7E24-52CB-4659-B45A-7F6B7B664302}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DEEA7E24-52CB-4659-B45A-7F6B7B664302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEEA7E24-52CB-4659-B45A-7F6B7B664302}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEEA7E24-52CB-4659-B45A-7F6B7B664302}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DEEA7E24-52CB-4659-B45A-7F6B7B664302}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DEEA7E24-52CB-4659-B45A-7F6B7B664302}.Release|Win32.ActiveCfg = Release|Any CPU
+		{DEEA7E24-52CB-4659-B45A-7F6B7B664302}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,7 +2,7 @@
 /*  Initialize  */
 
 body {
-    background-color:black;
+    background-color: #454545;
     padding: 0;
     margin: 0;
 }
@@ -53,6 +53,27 @@ body {
     padding: 0;
 }
 
+
+/*
+    Main Menu
+
+*/
+
+.main-menu-link-wrapper {
+    margin-top: 90px;
+    padding: 10px;
+}
+
+.main-menu-viewer-link {
+
+    float: left;
+    width: 48%;
+    border: solid 3px green;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
 
 
 /*          Viewer Section                          */

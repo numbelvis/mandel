@@ -40,6 +40,11 @@
     $title: document.getElementById('title-section'),
 
 
+    // Generator modes.  The mode number is the array index.
+    _modes:[],
+
+
+
     // This is the entry point for the mandel application.
     main: function (area_title) {
 

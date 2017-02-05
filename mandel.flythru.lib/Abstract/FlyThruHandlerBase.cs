@@ -39,7 +39,7 @@ namespace mandel.flythru.lib
             var cache = context.Cache;
 
             var shift_rate = 0.175m;
-            var max_iters = 250;
+            var max_iters = 500;
 
             
             // The command issued from UI.
@@ -81,6 +81,34 @@ namespace mandel.flythru.lib
                 }
                 else if (cmd == "west")
                 {
+                    location.x0.value -= x_shift;
+                    location.xMax.value -= x_shift;
+                }
+                else if (cmd == "northeast")
+                {
+                    location.y0.value -= y_shift;
+                    location.yMax.value -= y_shift;
+                    location.x0.value += x_shift;
+                    location.xMax.value += x_shift;
+                }
+                else if (cmd == "northwest")
+                {
+                    location.y0.value -= y_shift;
+                    location.yMax.value -= y_shift;
+                    location.x0.value -= x_shift;
+                    location.xMax.value -= x_shift;
+                }
+                else if (cmd == "southeast")
+                {
+                    location.y0.value += y_shift;
+                    location.yMax.value += y_shift;
+                    location.x0.value += x_shift;
+                    location.xMax.value += x_shift;
+                }
+                else if (cmd == "southwest")
+                {
+                    location.y0.value += y_shift;
+                    location.yMax.value += y_shift;
                     location.x0.value -= x_shift;
                     location.xMax.value -= x_shift;
                 }
