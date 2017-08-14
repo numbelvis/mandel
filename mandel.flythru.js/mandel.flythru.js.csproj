@@ -49,19 +49,18 @@
     <None Include="package.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="build\mandel.flythru.js" />
-    <Content Include="build\mandel.flythru.min.js" />
     <Content Include="Gruntfile.js" />
-    <Content Include="js\communication-modes\xhr-base64.js" />
-    <Content Include="js\communication-modes\web-socket.js" />
-    <Content Include="js\communication-modes\server-side-image.js" />
-    <Content Include="js\computation-modes\reg-gpu.js" />
-    <Content Include="js\computation-modes\arb-cpu.js" />
-    <Content Include="js\computation-modes\arb-gpu.js" />
-    <Content Include="js\main.js" />
-    <Content Include="js\computation-modes\reg-cpu.js" />
+    <Content Include="js\comms.js" />
+    <Content Include="js\controls.js" />
+    <Content Include="js\processors.js" />
+    <Content Include="js\util.js" />
+    <Content Include="js\viewer.js" />
+    <Content Include="js\loop.js" />
+    <Content Include="js\_main.js" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="build\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>cd $(ProjectDir)

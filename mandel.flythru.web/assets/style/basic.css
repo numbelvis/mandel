@@ -1,0 +1,95 @@
+﻿* {
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 2px;
+    margin: 2px;
+}
+
+.flex {
+    display:flex;   
+}
+
+input[type="radio"]:checked+label {
+    font-weight: bold;
+}
+
+fieldset {
+    margin-bottom: 10px;
+    min-width: 200px;
+}
+
+legend {
+    font-weight: bold;
+    font-size: larger;
+}
+
+input[type="button"] {
+    font-size:x-large;
+    padding: 10px;
+    margin-right: 25px;
+}
+
+.viewer-and-controls {
+    display:block;
+    margin: 0 auto;
+    padding: 50px;
+    width: 800px;
+    position: relative;
+}
+
+#reset {
+    float: right;
+}
+
+.viewer-container {
+    position:relative;
+}
+
+.viewer-container input {
+    position: absolute;
+    font-size: medium;
+    margin-right: 0;    
+}
+
+.status-box{
+    font-size: x-large;
+}
+
+#northwest {
+    top: 0;
+    left: 0;
+}
+
+#north {
+    top: 0;
+    left: 49%;
+}
+
+#northeast {
+    top: 0;
+    right: 0;
+}
+
+#west {
+    top: 49%;
+    left: 0;
+}
+
+#east {
+    top: 49%;
+    right: 0;
+}
+
+#southwest {
+    bottom: 0;
+    left: 0;
+}
+
+#south {
+    bottom: 0;
+    left: 49%;
+}
+
+#southeast {
+    bottom: 0;
+    right: 0;
+}

@@ -13,7 +13,7 @@
         <span id="area-text"></span>
     </div>
     <div id="viewer">
-        <img id="main-image" data-viewer-mode="stretch" src="" />
+        <img id="main-image" data-viewer-mode="stretch" />
         <div id="status" class="nice-wrap"><div class="status-title">Status: </div><div class="status-status status-not-running">not-running</div></div>
         
         <!-- start and pause/unpause button -->
@@ -47,10 +47,12 @@
 
     <!-- Scripts -->
     <script src="/js/<%= ScriptLocation %>"></script>
+    <script src="../js/mandeltest.js"></script>
+
 
     <form id="frmMain" runat="server">
         <script type="text/javascript"">
-            $mandel.main('<%= ModeNumber %>', 'server-side-image');
+            $mandel('<%= ModeNumber %>', 'server-side-image', 'main-image');
         </script>
     </form>
 </body>

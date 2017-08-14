@@ -1,35 +1,53 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>mandel:main</title>
-    <link href="assets/style/base.css" rel="stylesheet" />
+    <title>mandel - basic viewer</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="assets/style/basic.css" rel="stylesheet" />
 </head>
 <body>
-    <div id="title-section">
-        <span id="title-text">mandel</span>
-        <span id="area-text"></span>
-    </div>
-    <div class="main-menu-link-wrapper">
-        <div class="main-menu-viewer-link">
-            <h3>GPUs w/ Decimal Math</h3>
-            <h4>Very High framerate, low field depth</h4>
-            <a href="/view/reg-gpu">Launch</a>
+    <fieldset>
+        <legend>TESTING</legend>
+        <test-element></test-element>
+    </fieldset>
+
+
+
+    <fieldset>
+        <legend>Options</legend>
+        <div>
+            <label>Type of Math and processors:</label>
+            <div style="padding-left: 50px;">
+                <input type="radio" name="processors" value="0" checked="checked" /><label>Regular Math - CPU</label><br/>
+                <input type="radio" name="processors" value="1" /><label>Arbitrary Precision Math - CPU</label><br/>
+                <input type="radio" name="processors" value="2" /><label>Regular Math - GPU</label><br/>
+                <input type="radio" name="processors" value="3" /><label>Arbitrary Precision Math - GPU</label><br/>
+            </div>
+        </div>        
+    </fieldset>
+
+    <fieldset>
+        <legend>Controls</legend>
+        <input type="button" value="Start" id="start" />
+        <input type="button" value="Rand Colors" id="randcolors" />
+        <input type="button" value="Reset" id="reset" />
+        <span class="status-box">Status: <span id="status">Press <span style="color:green">Start</span> to begin</span></span>
+    </fieldset>
+
+    <fieldset class="viewer-container">
+        <legend>Viewer</legend>
+        <div class="viewer-and-controls">
+            <img id="viewer" src="/assets/img/starter-image.jpg" />
+            <input type="button" value="&#x2196;" id="northwest" />
+            <input type="button" value="&#x2191;" id="north" />
+            <input type="button" value="&#x2197;" id="northeast" />
+            <input type="button" value="&#x2190;" id="west" />
+            <input type="button" value="&#x2192;" id="east" />
+            <input type="button" value="&#x2199;" id="southwest" />
+            <input type="button" value="&#x2193;" id="south" />
+            <input type="button" value="&#x2198;" id="southeast" />
         </div>
-        <div class="main-menu-viewer-link">
-            <h3>GPUs w/ Arbitrary Precision Math</h3>
-            <h4>Very Deep field, low framerate</h4>
-            <a href="/view/arb-gpu">Launch</a>
-        </div>
-        <div class="main-menu-viewer-link">
-            <h3>CPU w/ Decimal Math</h3>
-            <h4>Low framerate, low field depth</h4>
-            <a href="/view/reg-cpu">Launch</a>
-        </div>
-        <div class="main-menu-viewer-link">
-            <h3>GPUs w/ Arbitrary Precision Math</h3>
-            <h4>Very Deep field, but Extremely low framerate</h4>
-            <a href="/view/arb-cpu">Launch</a>
-        </div>
-    </div>
+    </fieldset>
+    <script src="js/mandel.flythru.js"></script>
 </body>
 </html>

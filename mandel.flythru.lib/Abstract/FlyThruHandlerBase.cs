@@ -35,7 +35,7 @@ namespace mandel.flythru.lib
         public void ProcessRequest(HttpContext context)
         {
             // Get the form data passed in on the request and cache
-            var form = context.Request.Form;
+            var form = context.Request.QueryString;
             var cache = context.Cache;
 
             var shift_rate = 0.175m;
@@ -138,10 +138,10 @@ namespace mandel.flythru.lib
 
             cache[_location_key] = location;
 
-            var bytes = new RenderPngBytes(400, 300)
-                                .Render<CudaRegularMathCalculator, WaveyColoring, MDecimal>(location, max_iters, 1, 20, coloring);
+            var bytes = new RenderPngBytes(800, 500)
+                                .Render<CudaRegularMathCalculator, WaveyColoring, MDecimal>(location, max_iters, 1, 100, coloring);
 
-            File.WriteAllBytes(context.Server.MapPath("~/output/frame.png"), bytes);
+            File.WriteAllBytes(context.Server.MapPath("~/output/frame.jpg"), bytes);
         }
     }
 }
